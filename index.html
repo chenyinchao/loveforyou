@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Time</title>
+<!-- <meta name="viewport" id="view" content="width=750, initial-scale=1">  -->
+<meta name="viewport" id="view"> 
+<title>Fall in love</title>
 
 <style type="text/css">
 @font-face {
@@ -15,6 +17,7 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/current-device.min.js"></script>
 
 </head>
 
@@ -67,6 +70,13 @@
 </div>
 
 <script type="text/javascript">
+if (device.mobile) {
+	document.getElementById("view").setAttribute('content',"width=750, initial-scale=0.5");
+	$("#code").css("font-size", "30px");
+	$("#code").css("width", "100%");
+} else {
+	
+}
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
 var together = new Date();

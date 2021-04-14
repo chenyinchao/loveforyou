@@ -4,7 +4,10 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
 $(function () {
-    // setup garden
+	// 判断pc还是移动端
+	var isMobile = device.mobile();
+	console.log("当前是移动端 === %s", isMobile);
+	// setup garden
 	$loveHeart = $("#loveHeart");
 	var offsetX = $loveHeart.width() / 2;
 	var offsetY = $loveHeart.height() / 2 - 55;
@@ -15,11 +18,17 @@ $(function () {
     gardenCtx = gardenCanvas.getContext("2d");
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
-	
-	$("#content").css("width", $loveHeart.width() + $("#code").width());
-	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
-	$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+	if (device.mobile) {
+		$("#content").css("width", $loveHeart.width());
+		$("#content").css("height", $loveHeart.height() + $("#code").height());
+		$("#content").css("margin-top", 70);
+		$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+	} else {
+		$("#content").css("width", $loveHeart.width() + $("#code").width());
+		$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
+		$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
+		$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+	}
 
     // renderLoop
     setInterval(function () {
@@ -34,6 +43,16 @@ $(window).resize(function() {
         location.replace(location);
     }
 });
+
+//是否是移动端
+function IsPc() {
+	let userAgent = navigator.userAgent,
+		Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+	console.log('userAgent:', userAgent)
+	return Agents.some((i) => {
+		return userAgent.includes(i)
+	})
+}
 
 function getHeartPoint(angle) {
 	var t = angle / Math.PI;
@@ -128,7 +147,11 @@ function adjustWordsPosition() {
 }
 
 function adjustCodePosition() {
-	$('#code').css("margin-top", ($("#garden").height() - $("#code").height()) / 2);
+	if (device.mobile) {
+		$('#code').css("margin-top", 10);
+	} else {
+		$('#code').css("margin-top", ($("#garden").height() - $("#code").height()) / 2);
+	}
 }
 
 function showLoveU() {
