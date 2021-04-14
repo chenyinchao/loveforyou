@@ -70,14 +70,11 @@
 </div>
 
 <script type="text/javascript">
-if (device.mobile) {
+if (device.mobile()) {
 	document.getElementById("view").setAttribute('content',"width=750, initial-scale=0.5");
-	$("code").css("font-size", "30px");
-	$("code").css("width", "100%");
+	$("#code").css("font-size", "30px");
 	$("code").css("float", "none");
-	$("loveHeart").css("float", "none");
-} else {
-	
+    $("loveHeart").css("float", "none");
 }
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
