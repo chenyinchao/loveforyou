@@ -44,16 +44,6 @@ $(window).resize(function() {
     }
 });
 
-//是否是移动端
-function IsPc() {
-	let userAgent = navigator.userAgent,
-		Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
-	console.log('userAgent:', userAgent)
-	return Agents.some((i) => {
-		return userAgent.includes(i)
-	})
-}
-
 function getHeartPoint(angle) {
 	var t = angle / Math.PI;
 	var x = 19.5 * (16 * Math.pow(Math.sin(t), 3));
