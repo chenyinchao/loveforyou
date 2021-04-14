@@ -19,7 +19,7 @@ $(function () {
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
 	if (device.mobile) {
-		$("#content").css("width", $loveHeart.width());
+		$("#content").css("width", "100%");
 		$("#content").css("height", $loveHeart.height() + $("#code").height());
 		$("#content").css("margin-top", 70);
 		$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
