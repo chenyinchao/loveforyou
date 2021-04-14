@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- <meta name="viewport" id="view" content="width=750, initial-scale=1">  -->
 <meta name="viewport" id="view"> 
-<title>Fall in love</title>
+<title>Fall in love river</title>
 
 <style type="text/css">
 @font-face {
@@ -25,6 +25,19 @@
 
 <div id="mainDiv">
 	<div id="content">
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					亲爱的丽君，这是我们相爱在一起的时光
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					爱你直到永永远远<br/>
+					<div class="signature">- 陈尹超</div>
+				</div>
+			</div>
+		</div>
 		<div id="code">
 			<span class="comments">/*</span><br />
 			<span class="space"/><span class="comments">*2020—4-16</span><br />
@@ -53,19 +66,6 @@
 			I want to say:<br />
 			Baby, I love you forever;<br />
 		</div>
-		<div id="loveHeart">
-			<canvas id="garden"></canvas>
-			<div id="words">
-				<div id="messages">
-					亲爱的丽君，这是我们相爱在一起的时光
-					<div id="elapseClock"></div>
-				</div>
-				<div id="loveu">
-					爱你直到永永远远<br/>
-					<div class="signature">- 陈尹超</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 
@@ -73,8 +73,12 @@
 if (device.mobile()) {
 	document.getElementById("view").setAttribute('content',"width=750, initial-scale=0.5");
 	$("#code").css("font-size", "30px");
+	$("#code").css("width", "100%");
 	$("code").css("float", "none");
     $("loveHeart").css("float", "none");
+} else {
+	// 两个div交换位置
+	$("#code").after($("#loveHeart"))
 }
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
@@ -97,7 +101,7 @@ if (!document.createElement('canvas').getContext) {
 } else {
 	setTimeout(function () {
 		startHeartAnimation();
-	}, 5000);
+	}, 100);
 
 	timeElapse(together);
 	setInterval(function () {
